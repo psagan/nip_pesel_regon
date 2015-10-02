@@ -23,4 +23,27 @@ class NipTest < Minitest::Test
     refute validator.valid?
   end
 
+  # @todo - more tests on different formats with PL, DE, EN ....
+
+  def test_get_original_num
+    num = '588-224-77-15'
+    validator = NipPeselRegon::Validator::Nip.new(num)
+    validator.valid?
+    assert_equal num, validator.original_number
+  end
+
+  def test_get_normalized_num
+    num = '588-224-77-15'
+    validator = NipPeselRegon::Validator::Nip.new(num)
+    validator.valid?
+    assert_equal '5882247715', validator.num
+  end
+
+  def test_that_to_string_conversion_returns_normalized_num
+    num = '588-224-77-15'
+    validator = NipPeselRegon::Validator::Nip.new(num)
+    validator.valid?
+    assert_equal '5882247715', validator.to_s
+  end
+
 end

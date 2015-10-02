@@ -11,9 +11,6 @@ module NipPeselRegon
 
       # main validation method
       def validate
-        # normalize provided NIP
-        normalize
-
         # check if NIP provided has proper format
         return false unless has_proper_format?
 
@@ -49,8 +46,8 @@ module NipPeselRegon
       #
       #
       def normalize
-        # @num = @num.to_s.gsub(/[-\s]/, '')
-        @num = @num.to_s
+        @num = @num.to_s.gsub(/[-\s]/, '')
+        # @num = @num.to_s
       end
 
     end
