@@ -6,11 +6,11 @@ require 'nip_pesel_regon/version'
 Gem::Specification.new do |spec|
   spec.name          = "nip_pesel_regon"
   spec.version       = NipPeselRegon::VERSION
-  spec.authors       = ["psagan"]
+  spec.authors       = ["Patryk Sagan"]
   spec.email         = ["patryk.sagan@icloud.com"]
 
-  spec.summary       = %q{Write a short summary, because Rubygems requires one.}
-  spec.description   = %q{Write a longer description or delete this line.}
+  spec.summary       = %q{NIP, PESEL, REGON validator for Ruby, Rails}
+  spec.description   = %q{Validates polish identification numbers NIP, PESEL, REGON. Can be used in any ruby script or integrated with Rails validation}
   spec.homepage      = "https://github.com/psagan/nip_pesel_regon"
   spec.license       = "MIT"
 
