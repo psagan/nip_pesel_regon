@@ -20,6 +20,7 @@ module NipPeselRegon
         return false unless has_proper_format?
 
         # check if calculated sum modulo 11 is equal to last digit from NIP
+        # if yes then validation is correct
         (calculate_sum % 11) == @number[9].to_i
       end
 
