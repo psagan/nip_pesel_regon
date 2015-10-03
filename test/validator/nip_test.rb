@@ -36,7 +36,7 @@ class NipTest < Minitest::Test
     num = '588-224-77-15'
     validator = NipPeselRegon::Validator::Nip.new(num)
     validator.valid?
-    assert_equal '5882247715', validator.num
+    assert_equal '5882247715', validator.number
   end
 
   def test_that_to_string_conversion_returns_normalized_num

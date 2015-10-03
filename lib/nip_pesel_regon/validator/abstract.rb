@@ -1,11 +1,12 @@
 module NipPeselRegon
   module Validator
     class Abstract
-      attr_reader :num, :original_number
+      attr_reader :number, :original_number
 
-      def initialize(num)
-        @num = num
-        @original_number = @num
+      def initialize(number)
+        @number = number
+        # keep original number
+        @original_number = number
         # normalize provided number
         normalize
       end
@@ -15,7 +16,7 @@ module NipPeselRegon
       end
 
       def to_s
-        @num
+        @number
       end
 
       private
