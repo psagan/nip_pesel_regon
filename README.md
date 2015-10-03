@@ -1,5 +1,5 @@
 
-# NipPeselRegon 
+# NipPeselRegon - alpha not yet ready for production use
 
 [![Build Status](https://travis-ci.org/psagan/nip_pesel_regon.svg?branch=master)](https://travis-ci.org/psagan/nip_pesel_regon)
 
