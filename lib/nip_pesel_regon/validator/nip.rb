@@ -26,7 +26,7 @@ module NipPeselRegon
 
       # method responsible for detection if number provided has proper format
       def has_proper_format?
-        !@number.nil? && !@number.empty? && matches_pattern?
+        !@number.nil? && matches_pattern?
       end
 
       # method responsible for pattern matching
