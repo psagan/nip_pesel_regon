@@ -14,4 +14,9 @@ class RegonTest < Minitest::Test
     assert validator.valid?
   end
 
+  def test_improper_regon
+    validator = NipPeselRegon::Validator::Regon.new(221021006)
+    refute validator.valid?
+  end
+
 end
