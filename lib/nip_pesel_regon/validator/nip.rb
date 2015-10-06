@@ -6,11 +6,18 @@ module NipPeselRegon
     # please not only polish NIP's are valid with or without 'PL' prefix
     # NIP's with other prefixes like eg. 'DE', 'EN' are invalid
     class Nip < Abstract
+      attr_reader :checksum_calculator
+
       # array with weights
       WEIGHTS = [6, 5, 7, 2, 3, 4, 5, 6, 7] # @todo - candidate for sumcalculator object resonsible only for calculating sum
 
       # pattern for NIP
       PATTERN = /^\d{10}$/
+
+      def initialize(number)
+        super
+        @checksum_calculator = NipPeselRegon::Calculator::Checksum.new(WEIGHTS, @number)
+      end
 
       private
 
@@ -38,7 +45,7 @@ module NipPeselRegon
       # every digit from first 9 digits of NIP is multiplied with corresponding
       # weight and summed
       def calculate_sum
-        (0..8).to_a.inject(0) {|sum, i| sum += @number[i].to_i * WEIGHTS[i]}
+        checksum_calculator.calculate
       end
 
       # method responsible for

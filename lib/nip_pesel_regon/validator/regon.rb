@@ -27,8 +27,11 @@ module NipPeselRegon
     end
 
     class RegonValidatorAbstract
+      attr_reader :checksum_calculator
+
       def initialize(number)
         @number = number
+        @checksum_calculator = NipPeselRegon::Calculator::Checksum.new(self.class::WEIGHTS, @number)
       end
 
       private
@@ -44,8 +47,7 @@ module NipPeselRegon
       end
 
       def calculate_sum
-
-        (0...(self.class::WEIGHTS.length)).inject(0) {|sum, i| sum += @number[i].to_i * self.class::WEIGHTS[i]}
+        checksum_calculator.calculate
       end
     end
 
