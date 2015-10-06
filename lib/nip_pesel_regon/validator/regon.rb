@@ -79,10 +79,22 @@ module NipPeselRegon
         # check if REGON provided has proper format
         return false unless has_proper_format?
 
+        # check if REGON with 14 digits is proper
+        # REGON with 9 digits by slicing
+        # first 9 digits and testing against Regon9
+        return false unless is_valid_regon9?
+
         # check if calculated sum modulo 11 is equal to last digit from REGON
         # if yes then validation is correct
         mod = calculate_sum % 11
         mod == @number[-1].to_i
+      end
+
+      # method responsible
+      # for testing if first 9 digits of 14-digit REGON
+      # are proper 9-digits regon (Regon9 class)
+      def is_valid_regon9?
+         Regon9.new(@number[0,9]).validate
       end
 
     end
