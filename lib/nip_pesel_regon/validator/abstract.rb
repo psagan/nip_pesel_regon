@@ -26,11 +26,15 @@ module NipPeselRegon
       private
 
       def validate
-        raise NoMethodError, sprintf(NO_METHOD_ERROR_MSG, 'validate', self.class)
+        raise NoMethodError, no_method_error_message('validate')
       end
 
       def normalize
-        raise NoMethodError,sprintf(NO_METHOD_ERROR_MSG, 'normalize', self.class)
+        raise NoMethodError, no_method_error_message('normalize')
+      end
+
+      def no_method_error_message(method_name)
+        sprintf(NO_METHOD_ERROR_MSG, method_name, self.class)
       end
 
     end
