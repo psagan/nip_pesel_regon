@@ -10,7 +10,7 @@ module NipPeselRegon
       end
 
       def calculate
-        (0...(@weights.length)).inject(0) {|sum, i| sum += @number[i].to_i * @weights[i]}
+        @weights.each_with_index.inject(0) {|sum, (weight, i)| sum + @number[i].to_i * weight}
       end
     end
   end
