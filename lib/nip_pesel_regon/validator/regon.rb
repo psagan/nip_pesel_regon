@@ -23,9 +23,9 @@ module NipPeselRegon
       def validate
         @regon_validator.validate
       end
-
     end
 
+    #@todo - move those classes to other files
     class RegonValidatorAbstract
       attr_reader :checksum_calculator
 
@@ -38,7 +38,7 @@ module NipPeselRegon
 
       # method responsible for detection if number provided has proper format
       def has_proper_format?
-        !@number.nil? &&  matches_pattern?
+        !@number.nil? && matches_pattern?
       end
 
       # method responsible for pattern matching
@@ -60,11 +60,12 @@ module NipPeselRegon
         # check if REGON provided has proper format
         return false unless has_proper_format?
 
-        # check if calculated sum modulo 11 is equal to last digit from REGON
-        # if yes then validation is correct
         mod = calculate_sum % 11
+
+        # if mod is equal to 10 then set it to 0
         mod = 0 if mod == 10
 
+        # compare mod with last digit
         mod == @number[-1].to_i
       end
 
@@ -84,9 +85,9 @@ module NipPeselRegon
         # first 9 digits and testing against Regon9
         return false unless is_valid_regon9?
 
-        # check if calculated sum modulo 11 is equal to last digit from REGON
-        # if yes then validation is correct
         mod = calculate_sum % 11
+
+        # compare mod with last digit
         mod == @number[-1].to_i
       end
 
