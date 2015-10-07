@@ -7,7 +7,7 @@ module NipPeselRegon
 
       def initialize(regon)
         super
-        case(@number.length)
+        case(@number.length) # number is after normalization
           when 9
             @regon_validator = Regon9.new(@number)
           when 14
@@ -16,7 +16,7 @@ module NipPeselRegon
       end
 
       def valid?
-        @regon_validator.validate
+        @regon_validator.valid?
       end
 
     end
