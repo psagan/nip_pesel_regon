@@ -8,38 +8,12 @@ module NipPeselRegon
 
       PATTERN = /^\d{11}$/
 
-      attr_reader :checksum_calculator
-
-      def initialize(number)
-        super
-        @checksum_calculator = NipPeselRegon::Calculator::Checksum.new(WEIGHTS, @number)
-      end
-
       private
 
       def validate
-        # check if PESEL provided has proper format
-        return false unless has_proper_format?
         calculate_sum % 10 == 0
       end
 
-      # method responsible for detection if number provided has proper format
-      def has_proper_format?
-        !@number.nil? && matches_pattern?
-      end
-
-      # method responsible for pattern matching
-      def matches_pattern?
-        PATTERN =~ @number
-      end
-
-      def calculate_sum
-        @checksum_calculator.calculate
-      end
-
-      def normalize
-        @number = @number.to_s.gsub(/[-\s]/, '')
-      end
     end
   end
 end
