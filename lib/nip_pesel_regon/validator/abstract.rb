@@ -2,9 +2,6 @@ module NipPeselRegon
   module Validator
     class Abstract
 
-      # no method
-      NO_METHOD_ERROR_MSG = "No %s method defined in %s"
-
       attr_reader :number, :original_number, :checksum_calculator, :options
 
       def initialize(number, options = {})
@@ -41,7 +38,7 @@ module NipPeselRegon
       end
 
       def validate
-        raise NoMethodError, no_method_error_message('validate')
+        raise NoMethodError, "No validate method defined in #{self.class}"
       end
 
       # method responsible for sum calculation
@@ -54,10 +51,6 @@ module NipPeselRegon
       def checksum_calculator
         set_checksum_calculator unless @checksum_calculator
         @checksum_calculator
-      end
-
-      def no_method_error_message(method_name)
-        sprintf(NO_METHOD_ERROR_MSG, method_name, self.class)
       end
 
       def normalize
