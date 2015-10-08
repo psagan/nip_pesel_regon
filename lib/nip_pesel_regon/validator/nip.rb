@@ -18,7 +18,7 @@ module NipPeselRegon
       def validate
         # check if calculated sum modulo 11 is equal to last digit from NIP
         # if yes then validation is correct
-        (calculate_sum % 11) == @number[-1].to_i
+        (calculate_sum % 11) == number[-1].to_i
       end
 
       # method responsible for

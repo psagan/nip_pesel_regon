@@ -7,11 +7,11 @@ module NipPeselRegon
 
       def initialize(regon)
         super
-        case(@number.length) # number is after normalization
+        case(number.length) # number is after normalization
           when 9
-            @regon_validator = Regon9.new(@number)
+            @regon_validator = Regon9.new(number)
           when 14
-            @regon_validator = Regon14.new(@number)
+            @regon_validator = Regon14.new(number)
         end
       end
 
@@ -33,7 +33,7 @@ module NipPeselRegon
         mod = 0 if mod == 10
 
         # compare mod with last digit
-        mod == @number[-1].to_i
+        mod == number[-1].to_i
       end
 
     end
@@ -52,14 +52,14 @@ module NipPeselRegon
         mod = calculate_sum % 11
 
         # compare mod with last digit
-        mod == @number[-1].to_i
+        mod == number[-1].to_i
       end
 
       # method responsible
       # for testing if first 9 digits of 14-digit REGON
       # are proper 9-digits regon (Regon9 class)
       def is_valid_regon9?
-         Regon9.new(@number[0,9]).validate
+         Regon9.new(number[0,9]).validate
       end
 
     end
