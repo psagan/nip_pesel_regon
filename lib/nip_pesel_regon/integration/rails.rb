@@ -46,7 +46,6 @@ end
 module ActiveModel
   module Validations
     module HelperMethods
-
       %w{nip pesel regon}.each do |validator_name|
         define_method("validates_#{validator_name}_of") do |*attr_names|
           options = attr_names.extract_options!

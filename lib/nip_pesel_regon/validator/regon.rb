@@ -1,8 +1,9 @@
 module NipPeselRegon
   module Validator
+
+    # Extends Abstract to meet common, public interface
     class Regon < Abstract
 
-      # include module to have common interface or other layer of abstraction
       attr_reader :regon_validator
 
       def initialize(regon)
@@ -12,11 +13,13 @@ module NipPeselRegon
             @regon_validator = Regon9.new(number)
           when 14
             @regon_validator = Regon14.new(number)
+          else
+            @regon_validator = Validator::NotValid.new # Null Object Pattern
         end
       end
 
       def valid?
-        @regon_validator.valid?
+        regon_validator.valid?
       end
 
     end
