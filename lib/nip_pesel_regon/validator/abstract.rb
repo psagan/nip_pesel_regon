@@ -54,7 +54,7 @@ module NipPeselRegon
       end
 
       def normalize
-        return if options[:strict] && options[:strict] == true
+        return number if options[:strict] && options[:strict] == true
         @number = number.gsub(/[-\s]/, '')
       end
 
