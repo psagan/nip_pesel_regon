@@ -6,7 +6,7 @@ module NipPeselRegon
 
       attr_reader :regon_validator
 
-      def initialize(regon)
+      def initialize(*attr)
         super
         case(number.length) # number is after normalization
           when 9
