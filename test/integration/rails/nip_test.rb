@@ -24,6 +24,10 @@ module Test
           validates_nip_of :nip, strict: false
         end
 
+        class CompanyWithCustomMessage < CompanyBase
+          validates_nip_of :nip, message: 'test msg'
+        end
+
         class NipTest < Minitest::Test
 
           def test_that_nip_validates_properly_in_model
@@ -37,7 +41,6 @@ module Test
           end
 
           def test_that_proper_formatted_nip_do_not_validate_in_model_when_strict
-            Company.validates_nip_of :nip, strict: true
             c = CompanyWithStrictNipTrue.new(nip: '588-224-77-15')
             refute c.valid?
           end
@@ -45,6 +48,20 @@ module Test
           def test_that_proper_formatted_nip_validates_in_model_when_strict_set_to_false
             c = CompanyWithStrictNipFalse.new(nip: '588-224-77-15')
             assert c.valid?
+          end
+
+          def test_that_validation_of_not_proper_nip_adds_default_error_message
+            c = Company.new(nip: '5882247716')
+            c.valid?
+            assert_equal 1 , c.errors[:nip].size
+            assert_equal 'invalid NIP', c.errors[:nip].first
+          end
+
+          def test_that_validation_of_not_proper_nip_adds_custom_error_message
+            c = CompanyWithCustomMessage.new(nip: '5882247716')
+            c.valid?
+            assert_equal 1 , c.errors[:nip].size
+            assert_equal 'test msg', c.errors[:nip].first
           end
 
         end

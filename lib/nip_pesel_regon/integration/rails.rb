@@ -10,20 +10,21 @@ module NipPeselRegon
           message: 'invalid %s'
       }
 
-      def default_options
-        DEFAULT_OPTIONS
+      def initialize(*attr)
+        super
+        handle_default_options
       end
 
       # method responsible for merging options provided by developer
       # with default options
-      def options
-        default_options[:message] = default_options[:message] % super[:validator].upcase
-        @options = default_options.merge(super)
+      def handle_default_options
+        message_provided = options[:message]
+        @options = DEFAULT_OPTIONS.merge(options)
+
+        # handle message
+        @options[:message] = options[:message] % options[:validator].upcase unless message_provided
       end
 
-      def validator
-
-      end
 
       def validate_each(record, attribute, value)
         # do validation
