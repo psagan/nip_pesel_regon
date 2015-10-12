@@ -15,13 +15,17 @@ module NipPeselRegon
         handle_default_options
       end
 
-      # method responsible for merging options provided by developer
-      # with default options
+      # method responsible for handling default options
+      # and merging them with custom options provided by developer
       def handle_default_options
+        # before mergin check if custom :message provided by developer
         message_provided = options[:message]
+
+        # do merge
         @options = DEFAULT_OPTIONS.merge(options)
 
-        # handle message
+        # handle default message template based on condition if
+        # custom message was provided by developer
         @options[:message] = options[:message] % options[:validator].upcase unless message_provided
       end
 
