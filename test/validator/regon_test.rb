@@ -1,10 +1,11 @@
 require 'test_helper'
 
 # @todo - check if add namespace here
+# All REGON numbers are randomly generated in online generator
 class RegonTest < Minitest::Test
 
   def test_when_proper_fixnum_regon
-    validator = NipPeselRegon::Validator::Regon.new(221021005)
+    validator = NipPeselRegon::Validator::Regon.new(632188483)
     assert validator.valid?
   end
 
@@ -15,7 +16,7 @@ class RegonTest < Minitest::Test
   end
 
   def test_improper_regon
-    validator = NipPeselRegon::Validator::Regon.new(221021006)
+    validator = NipPeselRegon::Validator::Regon.new(632188489)
     refute validator.valid?
   end
 
