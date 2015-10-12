@@ -2,7 +2,7 @@ require 'test_helper'
 require 'supermodel'
 require "nip_pesel_regon/integration/rails"
 
-# # All NIP numbers are randomly generated in online generator
+# All NIP numbers are randomly generated in online generator
 module Test
   module Integration
     module Rails
