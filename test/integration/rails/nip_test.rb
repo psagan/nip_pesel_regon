@@ -52,14 +52,14 @@ module Test
 
           def test_that_validation_of_not_proper_nip_adds_default_error_message
             c = Company.new(nip: '5882247716')
-            c.valid?
+            refute c.valid?
             assert_equal 1 , c.errors[:nip].size
             assert_equal 'invalid NIP', c.errors[:nip].first
           end
 
           def test_that_validation_of_not_proper_nip_adds_custom_error_message
             c = CompanyWithCustomMessage.new(nip: '5882247716')
-            c.valid?
+            refute c.valid?
             assert_equal 1 , c.errors[:nip].size
             assert_equal 'test msg', c.errors[:nip].first
           end
