@@ -32,7 +32,7 @@ module NipPeselRegon
 
       def validate_each(record, attribute, value)
         # do validation
-        validator = self.class.const_get("NipPeselRegon::Validator::#{options[:validator].capitalize}").new(value, options)
+        validator = Object.const_get("NipPeselRegon::Validator::#{options[:validator].capitalize}").new(value, options)
 
         if validator.valid?
           # if NIP/PESEL/REGON is valid and 'save_normalized' options is set to true
