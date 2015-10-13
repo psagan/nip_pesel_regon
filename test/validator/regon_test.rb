@@ -2,6 +2,11 @@ require 'test_helper'
 
 # @todo - check if add namespace here
 # All REGON numbers are randomly generated in online generator
+# This class is responsible for test only public interface of
+# common NipPeselRegon::Validator::Regon proxy class, which
+# automatically determines which REGON strategy validation to use.
+# Concrete REGON validators unit tests are in different test classes
+# responsible for testing them: regon9_test.rb and regon14_test.rb
 class RegonTest < Minitest::Test
 
   def test_when_proper_fixnum_regon
@@ -39,5 +44,4 @@ class RegonTest < Minitest::Test
     validator = NipPeselRegon::Validator::Regon.new(regon)
     assert validator.valid?
   end
-
 end
