@@ -8,6 +8,7 @@ require "nip_pesel_regon/validator/regon14"
 require "nip_pesel_regon/validator/pesel"
 require "nip_pesel_regon/validator/not_valid"
 
+
 if defined? Rails
   require "nip_pesel_regon/integration/rails"
 end

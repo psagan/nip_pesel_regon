@@ -2,7 +2,7 @@ module NipPeselRegon
   module Validator
     class Abstract
 
-      attr_reader :number, :original_number, :checksum_calculator, :options
+      attr_reader :number, :original_number, :options
 
       def initialize(number, options = {})
         @number = number.to_s
@@ -42,22 +42,16 @@ module NipPeselRegon
       end
 
       def checksum
-        @checksum = checksum_calculator.calculate unless @checksum
-        @checksum
+        @checksum ||= calculate_checksum
       end
 
-      def checksum_calculator
-        set_checksum_calculator unless @checksum_calculator
-        @checksum_calculator
+      def calculate_checksum
+        NipPeselRegon::Calculator::Checksum.new(self.class::WEIGHTS, number).calculate
       end
 
       def normalize
         return number if options[:strict] && options[:strict] == true
         @number = number.gsub(/[-\s]/, '')
-      end
-
-      def set_checksum_calculator
-        @checksum_calculator = NipPeselRegon::Calculator::Checksum.new(self.class::WEIGHTS, number)
       end
 
     end
