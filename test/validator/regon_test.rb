@@ -44,4 +44,26 @@ class RegonTest < Minitest::Test
     validator = NipPeselRegon::Validator::Regon.new(regon)
     assert validator.valid?
   end
+
+  def test_get_original_num
+    num = '632-188-483'
+    validator = NipPeselRegon::Validator::Regon.new(num)
+    validator.valid?
+    assert_equal num, validator.original_number
+  end
+
+  def test_get_normalized_num
+    num = '632-188-483'
+    validator = NipPeselRegon::Validator::Regon.new(num)
+    validator.valid?
+    assert_equal '632188483', validator.number
+  end
+
+  def test_that_to_string_conversion_returns_normalized_num
+    num = '632-188-483'
+    validator = NipPeselRegon::Validator::Regon.new(num)
+    validator.valid?
+    assert_equal '632188483', validator.to_s
+  end
+
 end
