@@ -1,5 +1,5 @@
 
-# NipPeselRegon - rc1
+# NipPeselRegon - rc2
 
 [![Build Status](https://travis-ci.org/psagan/nip_pesel_regon.svg?branch=master)](https://travis-ci.org/psagan/nip_pesel_regon)
 
