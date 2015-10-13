@@ -5,6 +5,8 @@ module NipPeselRegon
 
       PATTERN = /^\d{9}$/
 
+      private
+
       def validate
         mod = checksum % 11
 
