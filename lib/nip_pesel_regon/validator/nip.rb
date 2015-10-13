@@ -5,7 +5,7 @@ module NipPeselRegon
     # for nip validation (including standard normalization)
     # please not only polish NIP's are valid with or without 'PL' prefix
     # NIP's with other prefixes like eg. 'DE', 'EN' are invalid
-    class Nip < Abstract
+    class Nip < Base
       # array with weights
       WEIGHTS = [6, 5, 7, 2, 3, 4, 5, 6, 7] # @todo - candidate for sumcalculator object resonsible only for calculating sum
 

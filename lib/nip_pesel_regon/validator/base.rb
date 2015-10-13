@@ -1,10 +1,12 @@
 module NipPeselRegon
   module Validator
-    class Abstract
+    class Base
 
       attr_reader :number, :original_number, :options
 
       def initialize(number, options = {})
+        # need to make string from input number because
+        # whole functionality is based on string
         @number = number.to_s
         # keep original number
         @original_number = number

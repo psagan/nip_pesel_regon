@@ -2,7 +2,7 @@ module NipPeselRegon
   module Validator
 
     # Extends Abstract to meet common, public interface
-    class Regon < Abstract
+    class Regon < Base
 
       attr_reader :regon_validator
 

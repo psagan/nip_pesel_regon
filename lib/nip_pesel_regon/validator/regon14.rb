@@ -1,6 +1,6 @@
 module NipPeselRegon
   module Validator
-    class Regon14 < Abstract
+    class Regon14 < Base
       WEIGHTS = [2, 4, 8, 5, 0, 9, 7, 3, 6, 1, 2, 4, 8]
 
       PATTERN = /^\d{14}$/
