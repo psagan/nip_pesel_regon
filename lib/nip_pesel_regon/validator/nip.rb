@@ -16,9 +16,9 @@ module NipPeselRegon
 
       # main validation method
       def validate
-        # check if calculated sum modulo 11 is equal to last digit from NIP
+        # check if calculated checksum modulo 11 is equal to last digit of NIP
         # if yes then validation is correct
-        (calculate_sum % 11) == number[-1].to_i
+        (checksum % 11) == number[-1].to_i
       end
 
       # method responsible for

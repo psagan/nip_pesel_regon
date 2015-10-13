@@ -41,11 +41,9 @@ module NipPeselRegon
         raise NoMethodError, "No validate method defined in #{self.class}"
       end
 
-      # method responsible for sum calculation
-      # every digit from first 9 digits of NIP is multiplied with corresponding
-      # weight and summed
-      def calculate_sum
-        checksum_calculator.calculate
+      def checksum
+        @checksum = checksum_calculator.calculate unless @checksum
+        @checksum
       end
 
       def checksum_calculator

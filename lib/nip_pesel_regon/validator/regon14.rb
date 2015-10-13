@@ -11,10 +11,9 @@ module NipPeselRegon
         # first 9 digits and testing against Regon9
         return false unless is_valid_regon9?
 
-        mod = calculate_sum % 11
-
-        # compare mod with last digit
-        mod == number[-1].to_i
+        # check if calculated checksum modulo 11 is equal to last digit of REGON
+        # if yes then validation is correct
+        (checksum % 11) == number[-1].to_i
       end
 
       # method responsible

@@ -12,7 +12,7 @@ module NipPeselRegon
       private
 
       def validate
-        calculate_sum % 10 == 0
+        checksum % 10 == 0
       end
 
     end
