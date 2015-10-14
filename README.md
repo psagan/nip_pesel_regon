@@ -4,17 +4,20 @@
 [![Build Status](https://travis-ci.org/psagan/nip_pesel_regon.svg?branch=master)](https://travis-ci.org/psagan/nip_pesel_regon)
 
 Validates polish identification numbers NIP, PESEL, REGON. Can be used in any ruby script or integrated with Rails validation.
+Validates both REGON number 9-digit and 14-digit.
 
 **Ruby compatibility:**
+
 - 1.9.3
 - 2.0
 - 2.1
 - 2.2
 
 **Rails compatibility:**
+
 - Rails 4.x
 
-## Installation
+## 1 Installation
 
 Add this line to your application's Gemfile:
 
@@ -30,9 +33,9 @@ Or install it yourself as:
 
     $ gem install nip_pesel_regon
 
-## Usage
+## 2 Usage
 
-### Rails
+### 2.1 Rails
 
 There are 3 methods available to use in ActiveRecord models:
 - validates_nip_of
@@ -62,9 +65,9 @@ Each of these methods have 3 options available:
 
 **Normalization**
 
-Before validation occures and with strict option set by default to false following normalization has place:
+Before validation occurs and with strict option set by default to false following normalization has place:
 ```ruby
-number.gsub(/[-\s]/, '') // all whitespace and dash characters are removed
+number.gsub(/[-\s]/, '') # all whitespace and dash characters are removed
 ```
 additionaly NIP validation removes 'PL prefix from number (other prefixes like DE, FR, etc. are not not removed because they are not valid in polish NIP validation)
 
@@ -83,10 +86,10 @@ c.valid? # true
 c.save! # model will save normalized version: '1464791822'
 ``` 
  
-**save_normalized and custom message**
+**save_normalized**
 ```ruby
 class Company < ActiveRecord::Base
-  validates_nip_of :nip, message: 'My custom message', save_normalized: false
+  validates_nip_of :nip, save_normalized: false
 end
 
 c = Company.new
@@ -107,15 +110,47 @@ c.valid? # false
 
 c.nip = '1464791822' # without any characters
 c.valid? # true
+
+c.nip = 'PL1464791822' # valid with prefix
+c.valid? # true
+
+c.nip = 'PL 1464791822' # with whitespace is not valid
+c.valid? false
 ```
 
+**custom message**
+```ruby
+class Company < ActiveRecord::Base
+  validates_nip_of :nip, message: 'My custom message'
+end
  
-## Contributing
+c = Company.new
+c.nip = 'xxx'
+c.valid? # false
+c.errors[:nip] # contains 'My custom message' instead of default one
+```
+
+### 2.2 Ruby
+Validators can be used in raw ruby code:
+```ruby
+require 'nip_pesel_regon'
+
+NipPeselRegon::Validator::Nip.new('1464791822').valid? # true
+NipPeselRegon::Validator::Nip.new('14647918Xa').valid? # false
+
+NipPeselRegon::Validator::Pesel.new('00291600815').valid? # true
+NipPeselRegon::Validator::Pesel.new('0029xxx815').valid? # false
+
+NipPeselRegon::Validator::Regon.new('632188483').valid? # true
+NipPeselRegon::Validator::Regon.new('001010107').valid? # false
+```
+ 
+## 3 Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/psagan/nip_pesel_regon.
 
 
-## License
+## 4 License
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
 
