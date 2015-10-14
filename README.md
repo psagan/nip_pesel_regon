@@ -37,7 +37,7 @@ Or install it yourself as:
 
 ### 2.1 Rails
 
-There are 3 methods available to use in ActiveRecord models:
+Gem introduces 3 methods to use in ActiveRecord models:
 - validates_nip_of
 - validates_pesel_of
 - validates_regon_of
