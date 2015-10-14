@@ -7,7 +7,7 @@ module NipPeselRegon
     # NIP's with other prefixes like eg. 'DE', 'EN' are invalid
     class Nip < Base
       # array with weights
-      WEIGHTS = [6, 5, 7, 2, 3, 4, 5, 6, 7] # @todo - candidate for sumcalculator object resonsible only for calculating sum
+      WEIGHTS = [6, 5, 7, 2, 3, 4, 5, 6, 7].freeze
 
       # pattern for NIP
       PATTERN = /^\d{10}$/

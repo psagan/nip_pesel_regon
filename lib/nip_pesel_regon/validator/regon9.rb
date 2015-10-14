@@ -1,7 +1,7 @@
 module NipPeselRegon
   module Validator
     class Regon9 < Base
-      WEIGHTS = [8, 9, 2, 3, 4, 5, 6, 7]
+      WEIGHTS = [8, 9, 2, 3, 4, 5, 6, 7].freeze
 
       PATTERN = /^\d{9}$/
 
