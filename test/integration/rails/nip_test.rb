@@ -80,6 +80,18 @@ module Test
             assert_equal '146-479-18-22', c.nip
           end
 
+          def test_that_save_model_saves_normalized_number_without_prefix_by_default
+            c = Company.new(nip: 'PL146-479-18-22')
+            c.save!
+            assert_equal '1464791822', c.nip
+          end
+
+          def test_that_save_model_saves_raw_number_with_prefix_when_proper_options_set
+            c = CompanyWithRawNip.new(nip: 'PL146-479-18-22')
+            c.save!
+            assert_equal 'PL146-479-18-22', c.nip
+          end
+
         end
       end
     end
