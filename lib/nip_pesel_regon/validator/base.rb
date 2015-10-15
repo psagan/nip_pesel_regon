@@ -1,12 +1,14 @@
 module NipPeselRegon
   module Validator
+    # Base validation class with common functionality for validators.
+    # Provides common public interface for validators.
     class Base
 
       attr_reader :number, :original_number, :options
 
       def initialize(number, options = {})
-        # need to make string from input number because
-        # whole functionality is based on string
+        # need to make input number a string because
+        # whole functionality is based on strings
         @number = number.to_s
         # keep original number
         @original_number = number
@@ -18,7 +20,7 @@ module NipPeselRegon
       end
 
       def valid?
-        # check if NIP provided has proper format
+        # check if number provided has proper format
         return false unless has_proper_format?
         validate
       end
@@ -34,7 +36,8 @@ module NipPeselRegon
         !number.nil? && matches_pattern?
       end
 
-      # method responsible for pattern matching
+      # Method responsible for pattern matching.
+      # Uses PATTERN constant from subclass.
       def matches_pattern?
         self.class::PATTERN =~ number
       end
@@ -47,10 +50,16 @@ module NipPeselRegon
         @checksum ||= calculate_checksum
       end
 
+      # Calculate checksum - uses checksum calculator.
+      # Known dependency here as there are no other calculators
+      # so for not complicating the code dependent class is placed directly here.
       def calculate_checksum
         NipPeselRegon::Calculator::Checksum.new(self.class::WEIGHTS, number).calculate
       end
 
+      # Number normalization which depends on option provided.
+      # Normalizes number when no 'strict' option.
+      # Removes dashes and whitespaces from number.
       def normalize
         return number if options[:strict] && options[:strict] == true
         @number = number.gsub(/[-\s]/, '')
