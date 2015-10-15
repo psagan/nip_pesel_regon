@@ -19,12 +19,14 @@ module NipPeselRegon
         normalize
       end
 
+      # Check if number is valid.
       def valid?
         # check if number provided has proper format
         return false unless has_proper_format?
         validate
       end
 
+      # To string conversion returns normalized number.
       def to_s
         number
       end
@@ -42,10 +44,12 @@ module NipPeselRegon
         self.class::PATTERN =~ number
       end
 
+      # Internal validation method - need to be overriden in subclasses.
       def validate
         raise NoMethodError, "No validate method defined in #{self.class}"
       end
 
+      # Get checksum calculated by checksum calculator.
       def checksum
         @checksum ||= calculate_checksum
       end
