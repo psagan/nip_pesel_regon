@@ -1,9 +1,9 @@
 module NipPeselRegon
   module Validator
 
-    # class responsible
-    # for nip validation (including standard normalization)
-    # please not only polish NIP's are valid with or without 'PL' prefix
+    # Class responsible
+    # for NIP validation (including standard normalization).
+    # Please note that only polish NIP's are valid with or without 'PL' prefix.
     # NIP's with other prefixes like eg. 'DE', 'EN' are invalid
     class Nip < Base
       # array with weights
@@ -21,11 +21,9 @@ module NipPeselRegon
         (checksum % 11) == number[-1].to_i
       end
 
-      # method responsible for
+      # Method responsible for
       # input number normalization before validation
-      # 1. Makes input a string
-      # 2. Removes all '-' and whitespaces
-      # 3. remove 'PL' substring from the beginning if any
+      # - standard normalization + remove 'PL' substring from the beginning if any
       def normalize
         @number = super.gsub(/^PL/i, '') # only pl NIP's are valid
       end
