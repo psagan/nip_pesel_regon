@@ -3,7 +3,7 @@ module NipPeselRegon
 
     # Class responsible for
     # acting as not valid in
-    # Null Object Pattern
+    # Null Object Pattern.
     class NotValid
       def valid?
         false
