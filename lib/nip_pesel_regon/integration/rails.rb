@@ -4,7 +4,7 @@ module NipPeselRegon
   module Integration
 
     # Class responsible for simple integration
-    # NIP/PESEL/REGON validation into active model validation
+    # NIP/PESEL/REGON validation into active model validation.
     class Rails < ActiveModel::EachValidator
 
       # hash with default options
@@ -46,6 +46,7 @@ module NipPeselRegon
           record.errors[attribute] << options[:message]
         end
       end
+
     end
   end
 end
@@ -78,5 +79,6 @@ module ActiveModel
         end
       end
     end
+
   end
 end
