@@ -1,7 +1,9 @@
 module NipPeselRegon
   module Validator
 
-    # Extends Abstract to meet common, public interface
+    # Class responsible for common REGON validation.
+    # Handles both 9-digit and 14-digit REGON numbers.
+    # Extends Base to meet common, public interface.
     class Regon < Base
 
       attr_reader :regon_validator
@@ -18,11 +20,12 @@ module NipPeselRegon
         end
       end
 
+      # Overrides public valid? method to provide
+      # validation based on stragegy.
       def valid?
         regon_validator.valid?
       end
 
     end
-
   end
 end
