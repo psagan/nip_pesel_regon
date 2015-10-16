@@ -14,7 +14,7 @@ module NipPeselRegon
 
       private
 
-      # main validation method
+      # Main validation method.
       def validate
         # check if calculated checksum modulo 11 is equal to last digit of NIP
         # if yes then validation is correct
