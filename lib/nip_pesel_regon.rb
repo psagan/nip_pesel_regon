@@ -15,5 +15,4 @@ end
 
 
 module NipPeselRegon
-  # Your code goes here...
 end
