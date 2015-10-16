@@ -33,7 +33,7 @@ module NipPeselRegon
 
       private
 
-      # method responsible for detection if number provided has proper format
+      # Method responsible for detection if number provided has proper format.
       def has_proper_format?
         !number.nil? && matches_pattern?
       end
