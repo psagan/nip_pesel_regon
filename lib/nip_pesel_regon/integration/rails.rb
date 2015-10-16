@@ -3,8 +3,8 @@ require 'active_support/inflector'
 module NipPeselRegon
   module Integration
 
-      # Class responsible for simple integration
-      # NIP/PESEL/REGON validation into active model validation
+    # Class responsible for simple integration
+    # NIP/PESEL/REGON validation into active model validation
     class Rails < ActiveModel::EachValidator
 
       # hash with default options
