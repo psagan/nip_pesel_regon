@@ -8,11 +8,10 @@ require "nip_pesel_regon/validator/regon14"
 require "nip_pesel_regon/validator/pesel"
 require "nip_pesel_regon/validator/not_valid"
 
-
+# if Rails environment then require Rails integration
 if defined? Rails
   require "nip_pesel_regon/integration/rails"
 end
-
 
 module NipPeselRegon
 end
