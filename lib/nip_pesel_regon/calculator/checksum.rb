@@ -2,7 +2,21 @@ module NipPeselRegon
   module Calculator
 
     # This class is responsible
-    # for calculating checksum
+    # for calculating checksum based
+    # on weights.
+    #
+    # Takes two arguments:
+    # - weights
+    # - number
+    #
+    # Example:
+    #
+    # weights = [ 2, 3, 4]
+    # number = '123'
+    #
+    # calculator = NipPeselRegon::Calculator::Checksum.new(weights, number)
+    # calculator.calculate # returns 20
+    #
     class Checksum
       def initialize(weights, number)
         @weights = weights
