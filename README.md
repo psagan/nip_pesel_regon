@@ -1,5 +1,5 @@
 
-# NipPeselRegon - rc2
+# NipPeselRegon
 
 [![Build Status](https://travis-ci.org/psagan/nip_pesel_regon.svg?branch=master)](https://travis-ci.org/psagan/nip_pesel_regon)
 [![Gem Version](https://badge.fury.io/rb/nip_pesel_regon.svg)](https://badge.fury.io/rb/nip_pesel_regon)
