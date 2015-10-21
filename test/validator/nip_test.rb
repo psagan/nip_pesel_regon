@@ -3,7 +3,6 @@ require 'test_helper'
 # All NIP numbers are randomly generated in online generator
 module Test
   module Validator
-
     class NipTest < Minitest::Test
 
       def test_when_proper_fixnum_nip
