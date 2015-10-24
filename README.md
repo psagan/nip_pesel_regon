@@ -62,7 +62,7 @@ c.valid? # true
 Each of these methods have 3 options available:
 - _message_ - to provide custom validation message
 - _strict_ - to determine if strict validation, without normalization, should be used **(false by default)**
-- _save_normalized_ - to determine if model save normalized number or raw (as provided by user) **(true by default)**
+- _save_normalized_ - to determine if model saves normalized number or raw (as provided by user) **(true by default)**
 
 **Normalization**
 
