@@ -44,7 +44,7 @@ module NipPeselRegon
         self.class::PATTERN =~ number
       end
 
-      # Internal validation method - need to be overriden in subclasses.
+      # Internal validation method - need to be overridden in subclasses.
       def validate
         raise NoMethodError, "No validate method defined in #{self.class}"
       end
