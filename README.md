@@ -3,6 +3,7 @@
 
 [![Build Status](https://travis-ci.org/psagan/nip_pesel_regon.svg?branch=master)](https://travis-ci.org/psagan/nip_pesel_regon)
 [![Gem Version](https://badge.fury.io/rb/nip_pesel_regon.svg)](https://badge.fury.io/rb/nip_pesel_regon)
+[![Code Climate](https://codeclimate.com/github/psagan/nip_pesel_regon/badges/gpa.svg)](https://codeclimate.com/github/psagan/nip_pesel_regon)
 
 Validates polish identification numbers NIP, PESEL, REGON. Can be used in any ruby script or integrated with Rails validation.
 Validates both REGON numbers 9-digit and 14-digit.
